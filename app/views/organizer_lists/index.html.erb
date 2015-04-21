@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Organizer Lists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @organizer_lists.each do |organizer_list| %>
+      <tr>
+        <td><%= organizer_list.title %></td>
+        <td><%= organizer_list.description %></td>
+        <td><%= link_to 'Show', organizer_list %></td>
+        <td><%= link_to 'Edit', edit_organizer_list_path(organizer_list) %></td>
+        <td><%= link_to 'Destroy', organizer_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Organizer list', new_organizer_list_path %>

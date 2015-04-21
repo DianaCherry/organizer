@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @organizer_list.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @organizer_list.description %>
+</p>
+
+<div id="organizer_items_wrapper">
+  <%= render @organizer_list.organizer_items %>
+  <div id="form">
+    <%= render "organizer_items/form" %>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_organizer_list_path(@organizer_list) %> |
+<%= link_to 'Back', organizer_lists_path %>
