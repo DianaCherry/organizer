@@ -1,14 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @organizer_list.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @organizer_list.description %>
-</p>
+<h2 class="organizer_list_title"><%= @organizer_list.title %></h2>
+<p class="organizer_list_sub_title"><%= @organizer_list.description %></p>
 
 <div id="organizer_items_wrapper">
   <%= render @organizer_list.organizer_items %>
@@ -17,5 +10,9 @@
   </div>
 </div>
 
-<%= link_to 'Edit', edit_organizer_list_path(@organizer_list) %> |
-<%= link_to 'Back', organizer_lists_path %>
+<div class="links">
+  <%= link_to 'Edit', edit_organizer_list_path(@organizer_list) %> |
+  <%= link_to 'Delete', organizer_list_path(@organizer_list), method: :delete, data: { confirm: "Are you sure?" }
+  %> |
+  <%= link_to 'Back', organizer_lists_path %>
+</div>

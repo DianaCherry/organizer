@@ -56,7 +56,7 @@ class OrganizerListsController < ApplicationController
   def destroy
     @organizer_list.destroy
     respond_to do |format|
-      format.html { redirect_to organizer_lists_url, notice: 'Organizer list was successfully destroyed.' }
+      format.html { redirect_to root_url, notice: 'Organizer list was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
