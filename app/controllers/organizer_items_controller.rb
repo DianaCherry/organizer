@@ -1,5 +1,6 @@
 class OrganizerItemsController < ApplicationController
   before_action :set_organizer_list
+  before_action :set_organizer_item, except: [:create]
 
   def create
     @organizer_item = @organizer_list.organizer_items.create(organizer_item_params)
@@ -7,7 +8,6 @@ class OrganizerItemsController < ApplicationController
   end
 
   def destroy
-    @organizer_item = @organizer_list.organizer_items.find(params[:id])
     if @organizer_item.destroy
       flash[:success] = "Organizer list item was deleted"
     else
@@ -16,10 +16,19 @@ class OrganizerItemsController < ApplicationController
     redirect_to @organizer_list
   end
 
+  def complete
+    @organizer_item.update_attribute(:completed_at, Time.now)
+    redirect_to @organizer_list, notice: 'Organizer item completed'
+  end
+
   private
 
   def set_organizer_list
     @organizer_list = OrganizerList.find(params[:organizer_list_id])
+  end
+
+  def set_organizer_item
+    @organizer_item = @organizer_list.organizer_items.find(params[:id])
   end
 
   def organizer_item_params

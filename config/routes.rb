@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :organizer_lists do
-    resources :organizer_items
+    resources :organizer_items do
+      member do
+        patch :complete
+      end
+    end
   end
 
   root 'organizer_lists#index'

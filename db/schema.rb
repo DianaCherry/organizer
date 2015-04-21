@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150421161310) do
+ActiveRecord::Schema.define(version: 20150421195001) do
 
   create_table "organizer_items", force: :cascade do |t|
     t.string   "content"
     t.integer  "organizer_list_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.datetime "completed_at"
   end
 
   add_index "organizer_items", ["organizer_list_id"], name: "index_organizer_items_on_organizer_list_id"
